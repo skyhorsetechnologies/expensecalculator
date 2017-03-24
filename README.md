@@ -1,2 +1,2 @@
 # expensecalculator
-Expense calculating app
+Expense calculating application for mobile
