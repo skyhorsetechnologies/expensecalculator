@@ -3,8 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { NavController } from 'ionic-angular';
 
-import { SignupPage } from '../signup/signup';
-import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../home/home';
 import { UserData } from '../../providers/user-data';
 
 
@@ -19,15 +18,24 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public userData: UserData) { }
 
   onLogin(form: NgForm) {
+  
     this.submitted = true;
-
+	//this.userData.login(this.login.username);
+	//alert(form.valid);
+      //this.navCtrl.push(HomePage);
     if (form.valid) {
-      this.userData.login(this.login.username);
-      this.navCtrl.push(TabsPage);
+    
+    
+    	if(this.login.username == 'admin' && this.login.password == 'admin'){
+    	this.userData.login(this.login.username);
+      this.navCtrl.push(HomePage);
+    	}
+    	else{
+    	alert('Incorrect Credentials');
+    	}
+    
+      
     }
   }
 
-  onSignup() {
-    this.navCtrl.push(SignupPage);
-  }
 }
